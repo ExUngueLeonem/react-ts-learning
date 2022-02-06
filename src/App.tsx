@@ -6,6 +6,7 @@ import UserItem from './components/UserItem';
 import TodoItem from './components/TodoItem';
 
 import { ITodo, IUser } from './types/types';
+import EventsExample from './components/EventsExample';
 
 const App = () => {
   //state
@@ -38,6 +39,7 @@ const App = () => {
 
   return (
     <div className='card-Wrapper'>
+      <EventsExample/>
       <Card width='300px' height='400px' variant={CardVariant.primary} onClick={(num: number) => { console.log(`вы нажали на кнопку ${num} раз`) }}>
         блок с текстом внутрт карточки
         <button >Click</button>
