@@ -1,24 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card, { CardVariant } from './components/Card';
-import UserList from './components/UserList';
-import { IUser } from './types/types';
+import List from './components/List';
+import UserItem from './components/UserItem';
+import TodoItem from './components/TodoItem';
+
+import { ITodo, IUser } from './types/types';
 
 const App = () => {
   //state
   const [users, setUsers] = useState<IUser[]>([]);
-  //useEffect
-  useEffect(() => { fetchUsers() }, [])
-  //fetch users
+  const [todos, setTodos] = useState<ITodo[]>([]);
+
+  useEffect(() => {
+    fetchUsers();
+    fetchTodos();
+   }, [])
+
   async function fetchUsers() {
     try {
       const res = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
-      console.log(res.data)
       setUsers(res.data)
     } catch (e) {
       alert(e)
     }
   }
+
+  async function fetchTodos() {
+    try {
+      const res = await axios.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos?_limit=10');
+      setTodos(res.data)
+    } catch (e) {
+      alert(e)
+    }
+  }
+
 
   return (
     <div className='card-Wrapper'>
@@ -26,7 +42,13 @@ const App = () => {
         блок с текстом внутрт карточки
         <button >Click</button>
       </Card>
-      <UserList users={users} />
+      <List
+        items={users}
+        renderItem={(user: IUser) => <UserItem user={user} key={user.id} />} />
+      <List
+        items={todos}
+        renderItem={(todo: ITodo) => <TodoItem todo={todo} key={todo.id} />} />
+
     </div>
   );
 };
