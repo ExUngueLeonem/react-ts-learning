@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import List from '../../components/List';
 import { ITodo } from '../../types/types';
 import TodoItem from '../../components/TodoItem'
 
-const TodoPage = () => {
+const TodoPage: FC = () => {
 
   //state
   const [todos, setTodos] = useState<ITodo[]>([]);

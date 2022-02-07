@@ -1,9 +1,11 @@
 import React from 'react';
 
-import UserPage from './pages/UserPage';
-import TodoPage from './pages/TodoPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+
+import UserPage from './pages/UserPage';
+import TodoPage from './pages/TodoPage';
+import UserItemPage from './pages/UserItemPage';
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path='/todos' element={<TodoPage />} />
           <Route path='/users' element={<UserPage />} />
+          <Route path='/users/:id' element={<UserItemPage />} />
         </Routes>
       </div>
     </BrowserRouter>
@@ -22,11 +25,3 @@ const App = () => {
 };
 
 export default App;
-
-/*       <Routes>
-         <NavLink to='/users'>Пользователи</NavLink>
-        <NavLink to='/todos'>Список задач</NavLink>
-       <Route path='/todos' element={<TodoPage />} />
- <Route path='/users' element={<UserPage />} />
- </Routes>
-*/

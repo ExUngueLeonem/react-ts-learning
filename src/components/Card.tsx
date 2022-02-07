@@ -13,7 +13,7 @@ interface cardPropsType {
     onClick: (num: number) => void
 }
 
-const Card: FC<cardPropsType> =
+const Card :FC<cardPropsType> =
     ({
         width,
         height,

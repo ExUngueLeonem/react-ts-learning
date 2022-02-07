@@ -5,7 +5,7 @@ interface TodoItemProps {
     todo: ITodo
 }
 
-const Todo :FC<TodoItemProps>= ({todo}) => {
+const TodoItem :FC<TodoItemProps>= ({todo}) => {
     return (
         <div>
             <input type="checkbox" checked={todo.completed}/>
@@ -14,4 +14,4 @@ const Todo :FC<TodoItemProps>= ({todo}) => {
     );
 };
 
-export default Todo;
+export default TodoItem;
